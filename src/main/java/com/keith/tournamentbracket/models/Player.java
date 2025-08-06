@@ -48,10 +48,20 @@ public class Player {
 	    this.updatedAt = new Date();
 	}
 	
-	//Many to many inverse part
+
+	@ManyToMany(mappedBy ="players")
+    private Set<Team> teams = new HashSet<>();
+
 	
-	@ManyToMany(mappedBy="players", fetch=FetchType.LAZY)
-	private Set<Tournament> tournaments = new HashSet<>();
+	
+	
+    @ManyToMany
+    @JoinTable(
+        name = "player_tournaments",
+        joinColumns = @JoinColumn(name = "player_id"),
+        inverseJoinColumns = @JoinColumn(name = "tournament_id")
+    )
+    private Set<Tournament> tournaments = new HashSet<>();
 	
 	//Constuctor Section
 	
@@ -60,24 +70,8 @@ public class Player {
 		this.name = name;
 	}
 	
-	//get and set uhs
-	//Getters and setters
-	
-		public Long getId() {
-			return id;
-		}
 		
-		public String getName() {
-			return name;
-		}
-		public void setName(String name) {
-			this.name = name;
-		}
-		public Set<Tournament> getTournaments(){
-			return tournaments;
-			}
-		
-		//helping keep in sync
+		//keeping in sync
 		
 		public void addTournament(Tournament t) {
 		    tournaments.add(t);
@@ -88,5 +82,43 @@ public class Player {
 		    tournaments.remove(t);
 		    t.getPlayers().remove(this);
 		}
+		public Long getId() {
+			return id;
+		}
+		public void setId(Long id) {
+			this.id = id;
+		}
+		public String getName() {
+			return name;
+		}
+		public void setName(String name) {
+			this.name = name;
+		}
+		public Date getCreatedAt() {
+			return createdAt;
+		}
+		public void setCreatedAt(Date createdAt) {
+			this.createdAt = createdAt;
+		}
+		public Date getUpdatedAt() {
+			return updatedAt;
+		}
+		public void setUpdatedAt(Date updatedAt) {
+			this.updatedAt = updatedAt;
+		}
+		public Set<Team> getTeams() {
+			return teams;
+		}
+		public void setTeams(Set<Team> teams) {
+			this.teams = teams;
+		}
+		public Set<Tournament> getTournaments() {
+			return tournaments;
+		}
+		public void setTournaments(Set<Tournament> tournaments) {
+			this.tournaments = tournaments;
+		}
+		
+		
 }
 

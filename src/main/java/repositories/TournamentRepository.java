@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.keith.tournamentbracket.models.Tournament;
 
 public interface TournamentRepository extends JpaRepository<Tournament, Long> {
-
-	List<Tournament> findAll();
+//made an service interface no longer needed
+//	List<Tournament> findAll();
 }
