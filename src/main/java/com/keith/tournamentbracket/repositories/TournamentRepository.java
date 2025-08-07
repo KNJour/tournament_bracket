@@ -9,4 +9,5 @@ import com.keith.tournamentbracket.models.Tournament;
 public interface TournamentRepository extends JpaRepository<Tournament, Long> {
 //made an service interface no longer needed
 //	List<Tournament> findAll();
+
 }

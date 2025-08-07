@@ -6,5 +6,8 @@ import com.keith.tournamentbracket.models.Player;
 
 public interface PlayerService {
 List<Player> listAll();
-Player addPlayer(String name);
+
+Player create(String name);
+
+List<Player> unassignedPlayers(Long tournamentId);
 }
