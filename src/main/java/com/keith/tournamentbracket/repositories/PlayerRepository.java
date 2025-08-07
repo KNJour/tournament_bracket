@@ -1,4 +1,4 @@
-package repositories;
+package com.keith.tournamentbracket.repositories;
 import java.util.List;
 import java.util.Optional;
 

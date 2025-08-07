@@ -1,4 +1,4 @@
-package repositories;
+package com.keith.tournamentbracket.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

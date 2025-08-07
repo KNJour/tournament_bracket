@@ -13,9 +13,8 @@ import com.keith.tournamentbracket.models.Match;
 import com.keith.tournamentbracket.models.Player;
 import com.keith.tournamentbracket.models.Team;
 import com.keith.tournamentbracket.models.Tournament;
-
-import repositories.MatchRepository;
-import repositories.TeamRepository;
+import com.keith.tournamentbracket.repositories.MatchRepository;
+import com.keith.tournamentbracket.repositories.TeamRepository;
 
 @Component
 public class BracketSeeder {
