@@ -23,16 +23,26 @@
 <body>
     <div class="container-fluid"> <!-- Beginning of Container -->
 	    <div class="page-header">
-	    	<h1 class="h2 mb-0">Tournament Bracket Maker!</h1>
+	    	<h1 class="h2 mb-0">Add a Player!</h1>
 	    </div>
 	    
 	    <div>
-	    <a href="" class="btn btn-primary btn-sm">Something</a>
-	    <a href="" class="btn btn-outline-secondary btn-sm">Something</a>
+	    <a href="/" class="btn btn-primary btn-sm">Nevermind</a>
 	    </div>
     
    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
-    <h2>New Player</h2>
+		  <form action="/createplayer" method="post" class="card p-3">
+			    <div class="form-group">
+				      <label for="name">Player Name</label>
+				      <input id="name" name="name" type="text" class="form-control" required value="${name}">
+			    </div>
+			
+			    <div class="d-flex">
+				      <button type="submit" class="btn btn-primary m-2">Create</button>
+			    </div>
+		  </form>
+  
+  
     </div> <!-- End of Container -->
     
     

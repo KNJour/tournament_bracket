@@ -71,5 +71,28 @@ public class TournamentServiceLogic implements TournamentService{
 	            default -> throw new IllegalArgumentException("Unknown seed mode");
 	        }
 	    }
+	 
+	 //find a tournament
+	 
+	 @Override
+	    @Transactional(readOnly = true)
+	    public Tournament findById(Long id) {
+	        // simple version: return null if not found
+	        return tournamentRepository.findById(id).orElse(null);
+	    }
+	 //delete
+	 @Override
+	 public void delete(Long id) {
+		    tournamentRepository.deleteById(id);
+		}
+	 //update
+//	 public Tournament updateTournament(Tournament tournament, String name, int teamSize, int matchSize) {
+//	    	Tournament upT = findById(tournament.getId());
+//	    	upT.setName(name);
+//			upT.setTeamSize(teamSize);
+//			upT.setMatchSize(matchSize);;
+//	    	
+//			return tournamentRepository.save(upT);
+//	    }
 	
 }

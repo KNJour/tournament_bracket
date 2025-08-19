@@ -10,4 +10,6 @@ List<Player> listAll();
 Player create(String name);
 
 List<Player> unassignedPlayers(Long tournamentId);
+
+void delete(Long id);
 }

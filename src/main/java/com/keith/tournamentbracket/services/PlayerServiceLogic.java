@@ -36,9 +36,15 @@ public class PlayerServiceLogic implements PlayerService {
 		return playerRepository.findAll(Sort.by("name"));
 	}
 	
+	
+	
+	//delete players
+	@Override
+	public void delete(Long id) {
+	    playerRepository.deleteById(id);
+	}
+	
 	//Listing unnasigned players
-	
-	
 	@Override
 	@Transactional(readOnly=true)
 	public List<Player> unassignedPlayers(Long tournamentId) {

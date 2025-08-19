@@ -27,8 +27,8 @@
 	    </div>
 	    
 	    <div>
-	    <a href="" class="btn btn-primary btn-sm">New Tournament</a>
-	    <a href="" class="btn btn-outline-secondary btn-sm">New Player</a>
+	    <a href="/newtournament" class="btn btn-primary btn-sm">New Tournament</a>
+	    <a href="newplayer" class="btn btn-outline-secondary btn-sm">New Player</a>
 	    </div>
     
    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
@@ -39,7 +39,7 @@
     			<div class="card-header d-flex justify-content-between align-items-center">
 		    			<h4>
 		    			<!-- count of the tournaments -->
-		    				<c:out value="${fn:length(tournaments)}"/>
+		    				<c:out value="${fn:length(tournaments)}"/> Tournamentsa
 		    				
 		    			</h4>
     			</div>
@@ -56,21 +56,28 @@
 	              									<th>Name</th>
 							                        <th class="text-center">Team Size</th>
 							                        <th class="text-center">Teams Per Match</th>
-							                        <th>For Later</th>
+							                        <th>Add Players</th>
+							                        <th>Delete</th>
               								</tr>
               							</thead>
               							<tbody>
               									<c:forEach items="${tournaments}" var="t">
 						                        <tr>
 						                          <td class="align-middle">
-							                            <a href="${pageContext.request.contextPath}/tournaments/${t.id}">
+							                            <a href="/tournaments/${t.id}">
 							                              <c:out value="${t.name}"/>
 							                            </a>
 						                          </td>
 									                          <td class="align-middle text-center"><c:out value="${t.teamSize}"/></td>
 									                          <td class="align-middle text-center"><c:out value="${t.matchSize}"/></td>
+									                          <td class="text-center">
+									                            		<a class="btn btn-link btn-sm" href="tournament/view/${t.id}">Open</a>
+									                          </td>
 									                          <td class="text-right">
-									                            		<a class="btn btn-link btn-sm" href="${pageContext.request.contextPath}/tournaments/${t.id}">Open</a>
+									                            		<form action="tournament/delete/${t.id} " method="post" class="d-inline">
+																		  <button type="submit" class="btn btn-sm btn-outline-danger"
+												          					onclick="return confirm('Delete tournament?, this will delete its matches and teams)">Delete</button>
+																	</form>
 									                          </td>
 						                        </tr>
 						                      </c:forEach>
@@ -90,7 +97,7 @@
 				<div class="card-header d-flex justify-content-between align-items-center">
 					<h4>
 		    			<!-- count of the players -->
-		    				<c:out value="${fn:length(players)}"/>
+		    				There are <c:out value="${fn:length(players)}"/> Players
 		    				
 		    			</h4>
 				</div>
@@ -105,12 +112,19 @@
 					                    <thead class="thead-light">
 					                      <tr>
 					                        <th>Name</th>
+					                        <th>Delete</th>
 					                      </tr>
 					                    </thead>
 					                    <tbody>
 					                      <c:forEach items="${players}" var="p">
 					                        <tr>
 					                          <td class="align-middle"><c:out value="${p.name}"/></td>
+					                          <td>
+						                          <form action="player/delete/${p.id }" method="post" class="d-inline">
+												  		<button type="submit" class="btn btn-sm btn-outline-danger"
+												          onclick="return confirm('Delete player?')">Delete</button>
+												</form>
+											</td>
 					                        </tr>
 					                      </c:forEach>
 					                    </tbody>
